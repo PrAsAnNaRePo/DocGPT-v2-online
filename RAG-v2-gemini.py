@@ -1,16 +1,12 @@
-import os
 import time
 import streamlit as st
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import google.generativeai as genai
 from PyPDF2 import PdfReader
 import re
 import json
-from dotenv import load_dotenv
-
-load_dotenv()
 
 system_prompt = """You are a document assistant. You can read and understand the document uploaded by user to answer the question asked by user.
 Read and understand the content/context fully inorder to make the correct answer. Don't make any answer of your own. Suppose if you don't have a content or the content is empty, then convey to user that you can't answer that question because its hard to find the detail in the document nicely.
